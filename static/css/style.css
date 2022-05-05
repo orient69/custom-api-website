@@ -1,0 +1,22 @@
+body{
+    text-align: center;
+    background-color: whitesmoke;
+}
+
+.row-dark{
+    background-color: bisque;
+}
+
+.bg-custom {
+    background-color: wheat;
+}
+
+.bdr {
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.grid {
+    display: grid;
+    place-items: center;
+}

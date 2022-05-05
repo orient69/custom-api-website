@@ -1,0 +1,45 @@
+{% include "header.html" %} 
+{% block contnet %}
+
+<div class="container-fluid">
+  <div class="row grid">
+    <div class="col">
+      <h3 class="py-5">Welcome to Gully Live</h3>
+      <div class="row">
+        <table class="table table-borderless py-5 table-light">
+          <thead>
+            <!-- <div class="col px-5 col-lg-4 col-md-12 col-sm-12"> -->
+              <tr class="table-light">
+                <th scope="col" class="px3 py-5">Match Title</th>
+                <th scope="col" class="px3 py-5">Date of the match</th>
+                <th scope="col" class="px3 py-5">Home Team</th>
+                <th scope="col" class="px3 py-5">Place of the Match</th>
+              </tr>
+          </thead>
+          <tbody>
+            {% for next_match in upcoming_matches %}
+            <tr class="table-dark">
+              <td scope="row" class="px-5 py-4">
+                {{ next_match['match_title'].split(',')[0].split('at')[0] }}
+              </td>
+              <td class="px-5 py-4">{{next_match['date']}}</td>
+              <td class="px-5 py-4">{{ next_match['home']['name'] }}</td>
+              <td class="px-5 py-4">{{ next_match['venue'] }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row row-dark grid">
+  <div class="col px-2 py-5">
+    <h6 class="px-2 py-2">Click to Know Live Score</h6>
+    <a href="{{ url_for('home') }}"
+      ><button type="button" class="btn btn-dark mx-2 my-3">Live Score</button>
+    </a>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,67 @@
+{% include "header.html" %} {% block contnet %}
+
+<div class="container-fluid">
+  <div class="row row-dark">
+    <div class="col px-2 py-5">
+      <h6 class="px-2 py-3">Click to Know Upcoming Events</h6>
+      <a href="{{ url_for('upcoming_events') }}"
+        ><button type="button" class="btn btn-dark mx-2 my-3">Events</button></a
+      >
+    </div>
+  </div>
+  <div class="row grid">
+    <div class="col col-lg-4 col-md-6">
+      {% with messages = get_flashed_messages() %} 
+            {% if messages %} 
+            <div class="row">
+              {% for message in messages %}
+                <h4 class="px-3 py-5">{{ message }}</h4>
+              {% endfor %}
+            </div> 
+            {% endif %} 
+          {% endwith %}
+        {% if ongoing['overs'] != "" %}
+        <table class="table table-borderless py-5 table-light">
+          <thead>
+            <tr class="table-light">
+              <th scope="col">Batting Team</th>
+              <th scope="col">Bat's Man</th>
+              <th scope="col">Runs</th>
+              <th scope="col">Bowling Team</th>
+              <th scope="col">Bowler</th>
+              <th scope="col">Wickets</th>
+              <th scope="col">Over</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr>
+                <td scope="row">
+                  {{ ongoing['batting_team'] }}
+                </td>
+                <td>
+                  {{ ongoing['bats_man'] }}
+                </td>
+                <td>
+                  {{ ongoing['runs'] }}
+                </td>
+                <td>
+                  {{ ongoing['bowling_team'] }}
+                </td>
+                <td>
+                  {{ ongoing['bowler'] }}
+                </td>
+                <td>
+                  {{ ongoing['wickets'] }}
+                </td>
+                <td>
+                  {{ ongoing['overs'] }}
+                </td>
+              </tr>
+          </tbody>
+        </table>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}
